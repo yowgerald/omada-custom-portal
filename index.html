@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-control" content="public">
+    <title>Captive Portal</title>
+    <link rel="icon" type="image/png" href="lg.png">
+    <link rel="stylesheet" href="index.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S0ED32181B"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-S0ED32181B');
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="greeting-container">
+            <h3 id="greeting"></h3>
+            <h3 id="weather"></h3>
+        </div>
+        <img class="logo" src="lg.png" alt="Logo">
+        <div class="pricing-list">
+            <div class="pricing-item">
+                <span class="pricing-label">For 3 hours</span>
+                <span class="pricing-value">₱5.00</span>
+            </div>
+            <div class="pricing-item">
+                <span class="pricing-label">For 8 hours</span>
+                <span class="pricing-value">₱10.00</span>
+            </div>
+            <div class="pricing-item">
+                <span class="pricing-label">For 24 hours</span>
+                <span class="pricing-value">₱25.00</span>
+            </div>
+        </div>
+        <div id="oper-hint" class="oper-hint"></div>
+        </h1>
+        <div id="hotspot-section" class="hidden">
+            <select id="hotspot-selector" class="hidden"></select>
+        </div>
+        <form id="login-form">
+            <div id="input-voucher" class="input-voucher">
+                <input type="number" maxlength="7" id="voucherCode" name="voucherCode" placeholder="VOUCHER CODE"
+                    inputmode="numeric"
+                    style="-webkit-appearance: textfield; -moz-appearance: textfield; appearance: textfield;">
+            </div>
+            <div id="input-user" class="hidden">
+                <input id="username" name="username" type="text" placeholder="Username" />
+            </div>
+            <div id="input-password" class="hidden user-input">
+                <input id="password" name="password" type="password" placeholder="Password" />
+            </div>
+            <div id="input-simple" class="hidden">
+                <input id="simplePassword" name="simplePassword" type="password" placeholder="Password" />
+            </div>
+            <div id="input-phone-num" class="hidden"> + <input id="country-code" />
+                <input id="phone-number" name="phone-number" type="text" placeholder="Phone Number" />
+            </div>
+            <div id="input-verify-code" class="hidden">
+                <input id="verify-code" name="verify-code" type="text" placeholder="Verification Code" />
+                <button id="get-code"> Get Code </button>
+            </div>
+            <input name="clientMac" id="cMac" style="display:none" />
+            <input name="radiusSvrIp" id="radiusServerIp" style="display:none" />
+            <button type="button" id="button-login">CONNECT</button>
+        </form>
+        <div id="button-area" class="hidden">
+            <button id="button-facebook" class="hidden">Facebook</button>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
