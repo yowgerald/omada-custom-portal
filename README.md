@@ -1,6 +1,6 @@
 # omada-custom-portal
 
-Remove unnecessary files after compressing in MacOS
+Zip file for importing
 ```bash
-./clean.sh
+./zip.sh
 ```
