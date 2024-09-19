@@ -145,7 +145,7 @@ async function setGreeting() {
 
     // Get the current condition (assumed to be the first item in the array)
     const currentCondition = data.current_condition[0];
-    const weatherDesc = currentCondition.weatherDesc[0].value;
+    const weatherConditions = currentCondition.weatherDesc[0].value;
 
     // Get the greeting container
     var greetingContainer = document.getElementById("greeting");
@@ -165,21 +165,27 @@ async function setGreeting() {
 
     // Adjust the greeting and weather text based on weather conditions
     var weatherText = "";
-    if (weatherDesc.toLowerCase().includes("rain") ||
-        weatherDesc.toLowerCase().includes("drizzle") ||
-        weatherDesc.toLowerCase().includes("cloud")) {
-        weatherText = "Don't forget your umbrella! 🌂🌧";
+    const isRainyOrCloudy = weatherConditions.includes("rain") ||
+        weatherConditions.includes("drizzle") ||
+        weatherConditions.includes("cloud");
+
+    const isHotOrSunny = weatherConditions.includes("hot") ||
+        weatherConditions.includes("warm") ||
+        weatherConditions.includes("sunny");
+
+    if (isRainyOrCloudy) {
+        weatherText = weatherConditions.includes("drizzle")
+            ? "Bring a hat or light cover, just in case. 🌂☁️"
+            : "Don't forget your umbrella! 🌂🌧";
+
         greetingText += "🥶";
-    } else if (weatherDesc.toLowerCase().includes("hot") ||
-        weatherDesc.toLowerCase().includes("warm") ||
-        weatherDesc.toLowerCase().includes("sunny")) {
+    } else if (isHotOrSunny) {
         weatherText = "Stay cool in the heat! 😎🔥";
         greetingText += "😎";
     } else {
         weatherText = "Have a nice day! 🌤️";
         greetingText += "😊";
     }
-
 
     // Update the greeting text in the HTML
     greetingContainer.textContent = greetingText;
