@@ -135,21 +135,12 @@ function getQueryStringAsObject() {
     return r;
 }
 // Function to set the greeting dynamically
-async function setGreeting() {
-    // Fetch weather data from wttr.in (for Cebu in this example)
-    const response = await fetch('https://wttr.in/Cebu?format=j1');
-    const data = await response.json();
-
+function setGreeting() {
     // Get the current hour
     var currentHour = new Date().getHours();
 
-    // Get the current condition (assumed to be the first item in the array)
-    const currentCondition = data.current_condition[0];
-    const weatherConditions = currentCondition.weatherDesc[0].value;
-
     // Get the greeting container
     var greetingContainer = document.getElementById("greeting");
-    var weatherContainer = document.getElementById("weather");
 
     // Set a base greeting based on the time of day
     var greetingText = "";
@@ -163,33 +154,8 @@ async function setGreeting() {
         greetingText = "Good Evening! 🌙";
     }
 
-    // Adjust the greeting and weather text based on weather conditions
-    var weatherText = "";
-    const isRainyOrCloudy = weatherConditions.includes("rain") ||
-        weatherConditions.includes("drizzle") ||
-        weatherConditions.includes("cloud");
-
-    const isHotOrSunny = weatherConditions.includes("hot") ||
-        weatherConditions.includes("warm") ||
-        weatherConditions.includes("sunny");
-
-    if (isRainyOrCloudy) {
-        weatherText = weatherConditions.includes("drizzle")
-            ? "Bring a hat or light cover, just in case. 🌂☁️"
-            : "Don't forget your umbrella! 🌂🌧";
-
-        greetingText += "🥶";
-    } else if (isHotOrSunny) {
-        weatherText = "Stay cool in the heat! 😎🔥";
-        greetingText += "😎";
-    } else {
-        weatherText = "Have a nice day! 🌤️";
-        greetingText += "😊";
-    }
-
     // Update the greeting text in the HTML
     greetingContainer.textContent = greetingText;
-    weatherContainer.textContent = weatherText;
 }
 
 // Call setGreeting function after the DOM content is loaded
