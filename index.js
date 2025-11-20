@@ -323,6 +323,11 @@ Ajax.post(
             }
 
             if (isCommited == false) {
+                // Disable button and change text to prevent double click
+                var button = document.getElementById("button-login");
+                button.disabled = true;
+                button.textContent = "LOADING...";
+
                 submitData['clientMac'] = clientMac;
                 submitData['apMac'] = apMac;
                 submitData['gatewayMac'] = gatewayMac;
@@ -347,6 +352,9 @@ Ajax.post(
                             window.location.href = landingUrl;
                             document.getElementById("oper-hint").innerHTML = errorHintMap[data.errorCode];
                         } else {
+                            // Re-enable button on error
+                            button.disabled = false;
+                            button.textContent = "CONNECT";
                             document.getElementById("oper-hint").innerHTML = errorHintMap[data.errorCode];
                         }
                     });
